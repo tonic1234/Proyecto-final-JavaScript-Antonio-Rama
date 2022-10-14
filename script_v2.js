@@ -814,6 +814,8 @@ function eatSlots(i) {
 }
 
 // Función de cocinar
+// Si en el inventario tengo un conejo y la fogata esta fabricada
+// puedo cocinar el conejo y obtengo carne de conejo
 
 function cookSlots(i, htmlId) {
     COOK_SOUND.play();
