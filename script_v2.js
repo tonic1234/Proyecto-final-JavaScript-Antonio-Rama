@@ -457,7 +457,7 @@ function state() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                   
 
                     // Ordenamos el arreglo data con una función que nos transforma los string de data.tiempo a números
                     // y nos permite ordenarlos de mayor a menos tiempo sobrevivido. 
@@ -1115,7 +1115,7 @@ function gather() {
         recolectImg()
 
         // Función de probabilidad de enfermar si salimos a recolectar con lluvia
-
+debugger
         if (weatherConditions >= weatherModifier) {
             chanceOfGettingSick = Math.ceil(Math.random() * 10);
         }
