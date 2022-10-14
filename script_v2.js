@@ -1115,7 +1115,7 @@ function gather() {
         recolectImg()
 
         // Función de probabilidad de enfermar si salimos a recolectar con lluvia
-debugger
+
         if (weatherConditions >= weatherModifier) {
             chanceOfGettingSick = Math.ceil(Math.random() * 10);
         }
