@@ -310,7 +310,7 @@ elementos de supervivencia y un reloj que funciona pero tiene la correa rota.`)
     gameProgress();
 }
 
-// Función de reinicio del juego
+// Función de re inicio del juego
 
 function restartGameButton() {
     CLICK_SOUND.play();
