@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./imagenes/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imagenes/favicon-16x16.png">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Lost Game - Proyecto Final JavaScript de Antonio Rama</title>
+</head>
+
+<body id="body">
+      <div class="loadScreen">
+        <div>
+            <h2 class="loadScreenLoadTitle">Cargando...</h2>
+            <lottie-player class="load" src="./imagenes/walking-deer.json" speed="1" loop autoplay>
+            </lottie-player>
+        </div>
+    </div>
+
+    <!-- Pantalla de juego perdido -->
+
+    <div class="loseBox">
+        <h2>Juego Perdido</h2>
+        <p class="timeScore"></p>
+        <p class="bestScores">Mejores Puntajes</p>
+        <div class="scoresBox">
+            <div class="scores">
+                <p>Jugador: <span class="playerName_1"></span> - Tiempo Vivido: <span class="playerScore_1"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_2"></span> - Tiempo Vivido: <span class="playerScore_2"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_3"></span> - Tiempo Vivido: <span class="playerScore_3"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_4"></span> - Tiempo Vivido: <span class="playerScore_4"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_5"></span> - Tiempo Vivido: <span class="playerScore_5"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_6"></span> - Tiempo Vivido: <span class="playerScore_6"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_7"></span> - Tiempo Vivido: <span class="playerScore_7"></span>
+                    Horas</p>
+                <p>Jugador: <span class="playerName_8"></span> - Tiempo Vivido: <span class="playerScore_8"></span>
+                    Horas</p>
+            </div>
+
+
+        </div>
+        <button class="reStartButton">Jugar de nuevo</button>
+    </div>
+
+    <!-- Pantalla de Nombre de Usuario -->
+    <div class="menuBg">
+        <div class="menuBox">
+            <p class="menuText">Ingrese su nombre</p><input class="nameBox" type="text">
+            <img class="playIcon" src="./imagenes/playIcon.png" alt="">
+            
+            <button
+                class="startButton">Jugar</button>
+        </div>
+    </div>
+
+<div class="preLoadBox">
+    <img src="./imagenes/nubetarde3.png" alt="">
+    <img src="./imagenes/nubetarde2.png" alt="">
+    <img src="./imagenes/nubetarde1.png" alt="">
+    <img src="./imagenes/nubenoche1.png" alt="">
+    <img src="./imagenes/nubenoche2.png" alt="">
+    <img src="./imagenes/nubenoche3.png" alt="">
+    <img src="./imagenes/nubedia1.png" alt="">
+    <img src="./imagenes/nubedia2.png" alt="">
+    <img src="./imagenes/nubedia3.png" alt="">
+    <img src="./imagenes/cielodia.png" alt="">
+    <img src="./imagenes/cielotarde.png" alt="">
+    <img src="./imagenes/cielonoche2.png" alt="">
+    <img src="./imagenes/botellallena.png" alt="">
+    <img src="./imagenes/botellavacia.png" alt="">
+    <img src="./imagenes/carnedeconejo.png" alt="">
+    <img src="./imagenes/conejo.png" alt="">
+    <img src="./imagenes/piedra.png" alt="">
+    <img src="./imagenes/palo.png" alt="">
+    <img src="./imagenes/hoja.png" alt="">
+    <img src="./imagenes/gusano.png" alt="">
+    <img src="./imagenes/fruta.png" alt="">
+</div>
+
+    <!-- Pantalla de mensajes -->
+
+
+    <div class="messageBox">
+        <div class="closeDiv"><img id="closeIconMsg" src="./imagenes/close.png" alt=""></div>
+        <p class="message">No puedes recolectar de noche sin algo que te ilumine</p>
+    </div>
+
+    <!-- Pantalla de comer -->
+
+
+    <div class="eatBox">
+        <div class="topBox">
+            <p class="screenTitle">Comer</p>
+            <img id="closeIconEat" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="foodBox">
+            <div class="boxFood_1"> <img class="cookIcon_1" src="./imagenes/cocinar.png" alt="">
+                <div class="food_1">
+                </div>
+            </div>
+            <div class="boxFood_2"> <img class="cookIcon_2" src="./imagenes/cocinar.png" alt="">
+                <div class="food_2"></div>
+            </div>
+            <div class="boxFood_3"> <img class="cookIcon_3" src="./imagenes/cocinar.png" alt="">
+                <div class="food_3"></div>
+            </div>
+            <div class="boxFood_4"> <img class="cookIcon_4" src="./imagenes/cocinar.png" alt="">
+                <div class="food_4"></div>
+            </div>
+            <div class="boxFood_5"> <img class="cookIcon_5" src="./imagenes/cocinar.png" alt="">
+                <div class="food_5"></div>
+            </div>
+            <div class="boxFood_6"> <img class="cookIcon_6" src="./imagenes/cocinar.png" alt="">
+                <div class="food_6"></div>
+            </div>
+            <div class="boxFood_7"> <img class="cookIcon_7" src="./imagenes/cocinar.png" alt="">
+                <div class="food_7"></div>
+            </div>
+            <div class="boxFood_8"> <img class="cookIcon_8" src="./imagenes/cocinar.png" alt="">
+                <div class="food_8"></div>
+            </div>
+        </div>
+        <p class="message"></p>
+    </div>
+
+    <!-- Pantalla de mochila -->
+
+
+    <div class="inventoryBox">
+        <div class="topBox">
+            <p class="screenTitle">Mochila</p>
+            <img id="closeIconInventory" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="inventorySlotBox">
+
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_1" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_1"></div>
+                <pc class="inventoryTitle_1">
+                    </p>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_2" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_2"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_3" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_3"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_4" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_4"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_5" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_5"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_6" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_6"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_7" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_7"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscard_8" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_8"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pantalla de crafting -->
+
+    <div class="craftingBox">
+        <div class="topBox">
+            <p class="screenTitleCraft">Fabricación</p>
+            <img id="closeIconCraft" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="craftItems">
+            <div class="woodFireButton"><img src="./imagenes/fuego.png" alt="">
+                <div class="craftItemText">
+                    <p class="craftTitle">Fogata</p>
+                    <p class="craftMaterials">Palo x 4, Piedra x 2</p>
+                    <p class="craftDescription">Te permite cocinar y sube tu ánimo</p>
+                </div>
+            </div>
+            <div class="collectorButton"><img src="./imagenes/recolectordeagua.png" alt="">
+                <div class="craftItemText">
+                    <p class="craftTitle">Recolector</p>
+                    <p class="craftMaterials">Botella x 1, Hoja x 4</p>
+                    <p class="craftDescription">Recolecta agua de rocío cada 12 horas</p>
+                </div>
+            </div>
+            <div class="torchButton"><img src="./imagenes/antorcha.png" alt="">
+                <div class="craftItemText">
+                    <p class="craftTitle">Antorcha</p>
+                    <p class="craftMaterials">Palo x 1, Hoja x 2</p>
+                    <p class="craftDescription">Te permite recolectar en la noche</p>
+                </div>
+            </div>
+            <div class="trapButton"><img src="./imagenes/trampa.png" alt="">
+                <div class="craftItemText">
+                    <p class="craftTitle">Trampa</p>
+                    <p class="craftMaterials">Palo x 2, Hoja x 2</p>
+                    <p class="craftDescription">Si tienes suerte atraparás pequeños animales</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de recolección -->
+
+    <div class="recollectBox">
+        <div class="topBox">
+            <p class="screenTitleCraft">Recolección</p>
+            <img id="closeIconRecollect" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="recollectItems">
+            <div class="recollectSlot_1">
+                <img class="discartRecolectIcon" id="RecolectSlotDiscard_1" src="./imagenes/eliminar.png" alt="">
+                <div class="recollect_1">
+                    <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                    </lottie-player>
+                </div>
+            </div>
+            <div class="recollectSlot_2">
+                <img class="discartRecolectIcon" id="RecolectSlotDiscard_2" src="./imagenes/eliminar.png" alt="">
+                <div class="recollect_2">
+                    <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                    </lottie-player>
+                </div>
+            </div>
+            <div class="recollectSlot_3">
+                <img class="discartRecolectIcon" id="RecolectSlotDiscard_3" src="./imagenes/eliminar.png" alt="">
+                <div class="recollect_3">
+                    <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                    </lottie-player>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pantalla Principal -->
+
+    <div class="gameBox">
+        <header>
+            <div class="headerClockBox"><img src="./imagenes/reloj.png" alt="">
+                <div>
+                    <p class="timeText"></p>
+                    <p class="dayText1"></p>
+                </div>
+
+            </div>
+            <div class="rightMenu">
+                <div class="headerCampUpGradesBox"><img class="upgradeIconTrampa" src="./imagenes/trampa.png"
+                        alt=""><img class="upgradeIconRecolector" src="./imagenes/recolectordeagua.png" alt=""><img
+                        class="upgradeIconAntorcha" src="./imagenes/antorcha.png" alt=""> </div>
+                <div class="headerMenuIconBox"><img class="muteIcon" src="./imagenes/mute.png" alt="">
+                    <img class="unMuteIcon" src="./imagenes/unmute.png" alt="">
+                    <div class="headerCampUpGradesBoxMobil"><img class="upgradeIconTrampaMobil"
+                            src="./imagenes/trampa.png" alt=""><img class="upgradeIconRecolectorMobil"
+                            src="./imagenes/recolectordeagua.png" alt=""><img class="upgradeIconAntorchaMobil"
+                            src="./imagenes/antorcha.png" alt=""> </div>
+                </div>
+                <div class="healtIcons"><img class="healtIconVirus" src="./imagenes/virus.png" alt=""></div>
+            </div>
+        </header>
+        <main>
+            <div class="campingMask">
+                <div class="campStatusBox">
+                    <div class="camping">
+                        <div class="rainContainer">
+                            <lottie-player class="rain" src="./imagenes/rain.json" speed="1" loop autoplay>
+                            </lottie-player>
+                            <lottie-player class="rain2" src="./imagenes/rain.json" speed="1" loop autoplay>
+                            </lottie-player>
+                        </div>
+                        <div class="sunMoon"><img class="sunMoonImg" src="./imagenes/solluna2.png" alt=""></div>
+                        <div class="sky">
+                            <div class="birdsContainer"></div>
+                                <div class="clouds" id="cloud_1">
+                                <div class="cloudOne"></div>
+                                <div class="cloudTwo"></div>
+                                <div class="cloudThree"></div>
+                            </div>
+                        </div>
+                        <div class="fireflyes"><div class="firefly_1"></div>
+                        <div class="firefly_2"></div>
+                        <div class="firefly_3"></div>
+                        <div class="firefly_4"></div>
+                        <div class="firefly_5"></div>
+                        <div class="firefly_6"></div></div>
+                        <img class="campingDia" src="./imagenes/campingdia.png" alt="">
+                        <img class="campingTarde" src="./imagenes/campingtarde.png" alt="">
+                        <img class="campingNoche" src="./imagenes/campingnoche2.png" alt="">
+                        <lottie-player class="campFire" src="./imagenes/19597-fire-flame-burning.json" speed="1" loop
+                            autoplay>
+                        </lottie-player>
+                        <img class="fireRock" src="./imagenes/basefuego.png" alt="">
+                        <img class="fireRockNigth" src="./imagenes/basefuegoNoche.png" alt="">
+                        <img class="fireglow" src="./imagenes/resplandor.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="playerStatusBox">
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconSalud" src="./imagenes/salud.png" alt="">
+                    </div>
+                    <div class="statusBarHealth">
+                        <p>SALUD</p>
+                    </div>
+                    <div class="statusBarHealthB">
+                        <p>SALUD</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconCansancio" src="./imagenes/cansancio.png" alt="">
+                    </div>
+                    <div class="statusBarFatigue">
+                        <p>CANSANCIO</p>
+                    </div>
+                    <div class="statusBarFatigueB">
+                        <p>CANSANCIO</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconHambre" src="./imagenes/hambre.png" alt="">
+                    </div>
+                    <div class="statusBarHunger">
+                        <p>HAMBRE</p>
+                    </div>
+                    <div class="statusBarHungerB">
+                        <p>HAMBRE</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconSed" src="./imagenes/sed.png" alt="">
+                    </div>
+                    <div class="statusBarThirst">
+                        <p>SED</p>
+                    </div>
+                    <div class="statusBarThirstB">
+                        <p>SED</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconMoral" src="./imagenes/moral.png" alt="">
+                    </div>
+                    <div class="statusBarMood">
+                        <p>ÁNIMO</p>
+                    </div>
+                    <div class="statusBarMoodB">
+                        <p>ÁNIMO</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="backPackBox">
+                <div class="playerBackPack">
+                    <div class="backPackIcon">
+                        <img src="./imagenes/mochila.png" alt="">
+                    </div>
+                    <div class="backPackContainers">
+
+                        <div class="backPackContainer" id="backPackSlot_1"></div>
+                        <div class="backPackContainer" id="backPackSlot_2"></div>
+                        <div class="backPackContainer" id="backPackSlot_3"></div>
+                        <div class="backPackContainer" id="backPackSlot_4"></div>
+                        <div class="backPackContainer" id="backPackSlot_5"></div>
+                        <div class="backPackContainer" id="backPackSlot_6"></div>
+                        <div class="backPackContainer" id="backPackSlot_7"></div>
+                        <div class="backPackContainer" id="backPackSlot_8"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="actionsBox">
+                <div class="actionButton" id="eatButton">
+                    <p class="actionButtonTitle">Comer</p>
+                    <p class="actionDescription">Comer y cocinar alimentos almacenados</p>
+                </div>
+                <div class="actionButton" id="waterButton">
+                    <p class="actionButtonTitle">Tomar Agua</p>
+                    <p class="actionDescription">Tomar agua almacenada</p>
+                </div>
+                <div class="actionButton" id="restButton">
+                    <p class="actionButtonTitle">Dormir</p>
+                    <p class="actionDescription">Dormir 8 horas para recuperar energía</p>
+                </div>
+                <div class="actionButton" id="gatherButton">
+                    <p class="actionButtonTitle">Recolectar</p>
+                    <p class="actionDescription">Salir al bosque a recolectar comida y materiales</p>
+                </div>
+                <div class="actionButton" id="craftButton">
+                    <p class="actionButtonTitle">Fabricar</p>
+                    <p class="actionDescription">Fabricar elementos de supervivencia</p>
+                </div>
+                <div class="actionButton" id="waitButton">
+                    <p class="actionButtonTitle">Esperar</p>
+                    <p class="actionDescription">Esperar 3 horas sin hacer nada</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script type="module" src="script_v2.js"></script>
+</body>
+
+</html>
