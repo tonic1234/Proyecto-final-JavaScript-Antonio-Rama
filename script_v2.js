@@ -183,18 +183,14 @@ const WATER_COLLECTOR_CREATION_TIME = [];
 const TORCH_CREATION_TIME = [];
 const TRAMP_CREATION_TIME = [];
 
-// Arreglo de enfermedades .
-
-const VIRUS = [];
-const VIRUS_INCUVATION = [];
 
 // Arreglo de frases para la acción  de espera .
 
 const WAITING_PHRASES = ["Te sientas bajo un árbol a esperar que pasen algunas horas",
-    "Miras las hormigas llevar hojas a su hormiguero para entretenerte algunas horas",
-    "Escuchas como los pájaros cantan y esperas que pase el tiempo",
-    "Buscas formas en las nubes para pasar el rato",
-    "Intentas buscar recuerdos en tu memoria y pasan algunas horas"];
+"Miras las hormigas llevar hojas a su hormiguero para entretenerte algunas horas",
+"Escuchas como los pájaros cantan y esperas que pase el tiempo",
+"Buscas formas en las nubes para pasar el rato",
+"Intentas buscar recuerdos en tu memoria y pasan algunas horas"];
 
 // NO CONSTANTES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -216,7 +212,7 @@ let days = 0;
 let totalHours = 0;
 let totalMinutes = 0;
 let weatherConditions = Math.ceil(Math.random() * 10);
-let weatherModifier = 8
+let weatherModifier = 7
 
 // Arreglo usado para la recolección y está formado por
 // los elementos que se recolectan en cada iteración.
@@ -229,6 +225,11 @@ let noFood = [];
 // Arreglo de la mochila del jugador.
 
 let BACKPACK = [];
+
+// Arreglo de enfermedades .
+
+let VIRUS = [];
+let VIRUS_INCUVATION = [];
 
 // FUNCIONES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -539,9 +540,10 @@ function virusStatus() {
     VIRUS.length > 0 ? document.querySelector(".healtIconVirus").style.visibility = "visible" : document.querySelector(".healtIconVirus").style.visibility = "hidden"
 
     if (totalHours - VIRUS_INCUVATION[0] >= 24) {
-        VIRUS.shift();
+        debugger
         message("Ya no estas enfermo");
         VIRUS_INCUVATION = [];
+        VIRUS = [];
     }
 }
 
@@ -1117,7 +1119,7 @@ function gather() {
         if (weatherConditions >= weatherModifier) {
             chanceOfGettingSick = Math.ceil(Math.random() * 10);
         }
-        if (chanceOfGettingSick >= 9) {
+        if (chanceOfGettingSick >= 7) {
             VIRUS.push("virus")
             VIRUS_INCUVATION.push(totalHours)
             SICK_SOUND.play();
