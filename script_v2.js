@@ -224,7 +224,7 @@ let noFood = [];
 
 // Arreglo de la mochila del jugador.
 
-let BACKPACK = [];
+let backPack = [STICK,LEAF,LEAF];
 
 // Arreglo de enfermedades .
 
@@ -669,9 +669,9 @@ function climateChange() {
         // Si esta lloviendo y tenemos una botella vacía esta se eliminara del inventario
         // y se remplazara con una botella llena
 
-        if (BACKPACK.some(element => element.name === "Botella Vacía") === true) {
-            let index = BACKPACK.findIndex(element => element.name === "Botella Vacía")
-            BACKPACK.splice(index, 1, FULL_BOTTLE);
+        if (backPack.some(element => element.name === "Botella Vacía") === true) {
+            let index = backPack.findIndex(element => element.name === "Botella Vacía")
+            backPack.splice(index, 1, FULL_BOTTLE);
         }
 
     }
@@ -841,12 +841,12 @@ function eat() {
         message("No puedes comer, no tienes hambre")
 
     }
-    else if (BACKPACK.some(element => element.type === "comida") === true) {
+    else if (backPack.some(element => element.type === "comida") === true) {
 
-        food = BACKPACK.filter(element => element.type === "comida");
-        noFood = BACKPACK.filter(element => element.type !== "comida");
-        BACKPACK = [];
-        Array.prototype.push.apply(BACKPACK, noFood);
+        food = backPack.filter(element => element.type === "comida");
+        noFood = backPack.filter(element => element.type !== "comida");
+        backPack = [];
+        Array.prototype.push.apply(backPack, noFood);
         document.querySelector(".eatBox").style.display = "flex";
 
         foodImg()
@@ -861,7 +861,7 @@ function eatButton() {
 function closeEatButton() {
     CLICK_SOUND.play();
     document.querySelector(".eatBox").style.display = "none";
-    Array.prototype.push.apply(BACKPACK, food);
+    Array.prototype.push.apply(backPack, food);
     gameProgress()
 }
 
@@ -869,13 +869,13 @@ function closeEatButton() {
 
 function drink() {
 
-    BACKPACK.some(element => element === FULL_BOTTLE) || message("No tienes agua para beber")
+    backPack.some(element => element === FULL_BOTTLE) || message("No tienes agua para beber")
 
     if (thirst <= 20) {
         message("No puedes beber agua, no tienes sed")
     }
 
-    else if (BACKPACK.some(drink => drink.name === "Botella con agua") === true) {
+    else if (backPack.some(drink => drink.name === "Botella con agua") === true) {
         DRINK_WATER_SOUND.play();
         thirst -= 70;
         fatigue -= 15;
@@ -885,19 +885,19 @@ function drink() {
         totalMinutes += 15;
         clouds(50)
 
-        let filter = BACKPACK.filter(element => element !== FULL_BOTTLE);
-        let noFilter = BACKPACK.filter(element => element === FULL_BOTTLE);
+        let filter = backPack.filter(element => element !== FULL_BOTTLE);
+        let noFilter = backPack.filter(element => element === FULL_BOTTLE);
 
         // Vacío el arreglo mochila
 
-        BACKPACK = [];
+        backPack = [];
 
         // Pongo los elementos del arreglo filtrados dentro de arreglo mochila
 
-        Array.prototype.push.apply(BACKPACK, filter);
+        Array.prototype.push.apply(backPack, filter);
 
         for (let index = 0; index < noFilter.length - 1; index++) {
-            BACKPACK.push(FULL_BOTTLE)
+            backPack.push(FULL_BOTTLE)
         }
 
         gameProgress()
@@ -969,9 +969,9 @@ function inventory() {
 
     function inventorySlots(i, idInv, idBack, idDisc) {
 
-        if (BACKPACK[i] !== undefined) {
-            document.querySelector(idInv).innerHTML = BACKPACK[i].img;
-            document.querySelector(idBack).innerHTML = BACKPACK[i].img;
+        if (backPack[i] !== undefined) {
+            document.querySelector(idInv).innerHTML = backPack[i].img;
+            document.querySelector(idBack).innerHTML = backPack[i].img;
             document.querySelector(idDisc).style.display = "flex";
         } else {
             document.querySelector(idInv).innerHTML = "";
@@ -1004,7 +1004,7 @@ function closeInventoryButton() {
 
 function discardInventory(i, invSlotId) {
     DISCARD_SOUND.play();
-    BACKPACK.splice(i, 1);
+    backPack.splice(i, 1);
     document.querySelector(invSlotId).innerHTML = "";
     minutes += 5;
     totalMinutes += 5;
@@ -1015,8 +1015,8 @@ function discardInventory(i, invSlotId) {
 // Si esta capacidad se ve superada se elimina el primer índice del array
 
 function inventoryLimit() {
-    if (BACKPACK.length >= 9) {
-        BACKPACK.shift()
+    if (backPack.length >= 9) {
+        backPack.shift()
         gameProgress()
     }
 }
@@ -1161,7 +1161,7 @@ function discardCollect(i) {
 
 function closeGather() {
     CLICK_SOUND.play();
-    Array.prototype.push.apply(BACKPACK, collected);
+    Array.prototype.push.apply(backPack, collected);
     document.querySelector(".recollectBox").style.display = "none"
     let loadDots = `<lottie-player class="loadRecollect"
     src="./imagenes/loaddots.json" speed="1" loop autoplay></lottie-player>`
@@ -1214,10 +1214,10 @@ function craft() {
 
     // Clasificación de los materiales en el arreglo mochila
 
-    let sticks = BACKPACK.filter(element => element === STICK);
-    let leaves = BACKPACK.filter(element => element === LEAF);
-    let rocks = BACKPACK.filter(element => element === ROCK);
-    let bottles = BACKPACK.filter(element => element === EMPTY_BOTTLE)
+    let sticks = backPack.filter(element => element === STICK);
+    let leaves = backPack.filter(element => element === LEAF);
+    let rocks = backPack.filter(element => element === ROCK);
+    let bottles = backPack.filter(element => element === EMPTY_BOTTLE)
 
     // Función de materiales y botones de fabricación
     // si contamos con los materiales necesarios se genera el botón y evento click
@@ -1273,26 +1273,26 @@ function craft() {
         // Filtramos los materiales necesarios para cada fabricación en arrays diferentes
         // y evaluamos si cumplen con las condiciones de cantidades necesarias
 
-        const NO_FILTER = BACKPACK.filter(element => element !== LEAF && element !== EMPTY_BOTTLE);
-        const LEAVES_FILTER = BACKPACK.filter(element => element === LEAF);
-        const BOTTLE_FILTER = BACKPACK.filter(element => element === EMPTY_BOTTLE);
+        const NO_FILTER = backPack.filter(element => element !== LEAF && element !== EMPTY_BOTTLE);
+        const LEAVES_FILTER = backPack.filter(element => element === LEAF);
+        const BOTTLE_FILTER = backPack.filter(element => element === EMPTY_BOTTLE);
 
         // Vació el arreglo mochila
 
-        BACKPACK = [];
+        backPack = [];
 
         // Pongo los elementos del arreglo no filtrados dentro de arreglo mochila
 
-        Array.prototype.push.apply(BACKPACK, NO_FILTER);
+        Array.prototype.push.apply(backPack, NO_FILTER);
 
         // Devolvemos a mochila los materiales sobrantes en caso de haber
 
         for (let index = 0; index < LEAVES_FILTER.length - 4; index++) {
-            BACKPACK.push(LEAF)
+            backPack.push(LEAF)
         }
 
         for (let index = 0; index < BOTTLE_FILTER.length - 1; index++) {
-            BACKPACK.push(EMPTY_BOTTLE)
+            backPack.push(EMPTY_BOTTLE)
         }
 
         // Removemos las escuchas de eventos 
@@ -1314,19 +1314,19 @@ function craft() {
         document.querySelector(".craftingBox").style.display = "none";
         CAMPING_UPGRADE_TORCH.push(TORCH);
 
-        const NO_FILTER = BACKPACK.filter(element => element !== LEAF && element !== STICK);
-        const LEAVES_FILTER = BACKPACK.filter(element => element === LEAF);
-        const STICKS_FILTER = BACKPACK.filter(element => element === STICK);
+        const NO_FILTER = backPack.filter(element => element !== LEAF && element !== STICK);
+        const LEAVES_FILTER = backPack.filter(element => element === LEAF);
+        const STICKS_FILTER = backPack.filter(element => element === STICK);
 
-        BACKPACK = [];
+        backPack = [];
 
-        Array.prototype.push.apply(BACKPACK, NO_FILTER);
+        Array.prototype.push.apply(backPack, NO_FILTER);
 
         for (let index = 0; index < LEAVES_FILTER.length - 2; index++) {
-            BACKPACK.push(LEAF)
+            backPack.push(LEAF)
         }
         for (let index = 0; index < STICKS_FILTER.length - 1; index++) {
-            BACKPACK.push(STICK)
+            backPack.push(STICK)
         }
         CRAFT_WOOD_FIRE_BUTTON.removeEventListener("click", craftWoodFire);
         CRAFT_TORCH_BUTTON.removeEventListener("click", craftTorch);
@@ -1346,20 +1346,20 @@ function craft() {
         document.querySelector(".craftingBox").style.display = "none";
         CAMPING_UPGRADE_WOOD_FIRE.push(WOOD_FIRE);
 
-        const NO_FILTER = BACKPACK.filter(element => element !== ROCK && element !== STICK);
-        const ROCKS_FILTER = BACKPACK.filter(element => element === ROCK);
-        const STICKS_FILTER = BACKPACK.filter(element => element === STICK);
+        const NO_FILTER = backPack.filter(element => element !== ROCK && element !== STICK);
+        const ROCKS_FILTER = backPack.filter(element => element === ROCK);
+        const STICKS_FILTER = backPack.filter(element => element === STICK);
 
-        BACKPACK = [];
+        backPack = [];
 
-        Array.prototype.push.apply(BACKPACK, NO_FILTER);
+        Array.prototype.push.apply(backPack, NO_FILTER);
 
         for (let index = 0; index < ROCKS_FILTER.length - 2; index++) {
-            BACKPACK.push(ROCK)
+            backPack.push(ROCK)
         }
 
         for (let index = 0; index < STICKS_FILTER.length - 3; index++) {
-            BACKPACK.push(STICK)
+            backPack.push(STICK)
         }
 
         CRAFT_WOOD_FIRE_BUTTON.removeEventListener("click", craftWoodFire);
@@ -1382,20 +1382,20 @@ function craft() {
 
         gameProgress()
 
-        const NO_FILTER = BACKPACK.filter(element => element !== LEAF && element !== STICK);
-        const LEAVES_FILTER = BACKPACK.filter(element => element === LEAF);
-        const STICKS_FILTER = BACKPACK.filter(element => element === STICK);
+        const NO_FILTER = backPack.filter(element => element !== LEAF && element !== STICK);
+        const LEAVES_FILTER = backPack.filter(element => element === LEAF);
+        const STICKS_FILTER = backPack.filter(element => element === STICK);
 
-        BACKPACK = [];
+        backPack = [];
 
-        Array.prototype.push.apply(BACKPACK, NO_FILTER);
+        Array.prototype.push.apply(backPack, NO_FILTER);
 
         for (let index = 0; index < LEAVES_FILTER.length - 2; index++) {
-            BACKPACK.push(LEAF)
+            backPack.push(LEAF)
         }
 
         for (let index = 0; index < STICKS_FILTER.length - 2; index++) {
-            BACKPACK.push(STICK)
+            backPack.push(STICK)
         }
 
         CRAFT_WOOD_FIRE_BUTTON.removeEventListener("click", craftWoodFire);
@@ -1423,13 +1423,13 @@ function trapCollect() {
     let difTiempoTrampa = totalHours - TRAMP_CREATION_TIME[0]
 
     if (CAMPING_UPGRADE_TRAMP.length > 0 && difTiempoTrampa / 24 === 1) {
-        BACKPACK.push(RABBIT);
+        backPack.push(RABBIT);
     }
     else if (CAMPING_UPGRADE_TRAMP.length > 0 && difTiempoTrampa / 48 === 1) {
-        BACKPACK.push(RABBIT);
+        backPack.push(RABBIT);
     }
     else if (CAMPING_UPGRADE_TRAMP.length > 0 && difTiempoTrampa / 72 === 1) {
-        BACKPACK.push(RABBIT);
+        backPack.push(RABBIT);
     }
     else if (CAMPING_UPGRADE_TRAMP.length > 0) {
         document.querySelector(".upgradeIconTrampa").style.display = "flex";
@@ -1448,13 +1448,13 @@ function collectorCollect() {
     let difTiempoRecolector = totalHours - WATER_COLLECTOR_CREATION_TIME[0];
 
     if (CAMPING_UPGRADE_WATER_COLLECTOR.length > 0 && difTiempoRecolector / 24 === 1) {
-        BACKPACK.push(FULL_BOTTLE);
+        backPack.push(FULL_BOTTLE);
     }
     else if (CAMPING_UPGRADE_WATER_COLLECTOR.length > 0 && difTiempoRecolector / 48 === 1) {
-        BACKPACK.push(FULL_BOTTLE);
+        backPack.push(FULL_BOTTLE);
     }
     else if (CAMPING_UPGRADE_WATER_COLLECTOR.length > 0 && difTiempoRecolector / 72 === 1) {
-        BACKPACK.push(FULL_BOTTLE);
+        backPack.push(FULL_BOTTLE);
     }
     else if (CAMPING_UPGRADE_WATER_COLLECTOR.length > 0) {
         document.querySelector(".upgradeIconRecolector").style.display = "flex";
