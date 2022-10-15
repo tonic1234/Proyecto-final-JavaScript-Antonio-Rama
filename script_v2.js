@@ -212,7 +212,7 @@ let days = 0;
 let totalHours = 0;
 let totalMinutes = 0;
 let weatherConditions = Math.ceil(Math.random() * 10);
-let weatherModifier = 7
+let weatherModifier = 8
 
 // Arreglo usado para la recolección y está formado por
 // los elementos que se recolectan en cada iteración.
@@ -269,7 +269,7 @@ function playGame() {
     DAY_AMBIENT_SOUND.play();
     STAR_GAME_SOUND.play();
 
-    if (weatherConditions >= weatherModifier) {
+    if (weatherConditions > weatherModifier) {
         RAIN_AMBIENT_SOUND.play();
     }
 
@@ -655,7 +655,7 @@ function sunMoon() {
 
 function climateChange() {
 
-    if (weatherConditions >= weatherModifier) {
+    if (weatherConditions > weatherModifier) {
 
         document.querySelector(".rainContainer").style.visibility = "visible"
         RAIN_AMBIENT_SOUND.play();
@@ -1116,7 +1116,7 @@ function gather() {
 
         // Función de probabilidad de enfermar si salimos a recolectar con lluvia
 
-        if (weatherConditions >= weatherModifier) {
+        if (weatherConditions > weatherModifier) {
             chanceOfGettingSick = Math.ceil(Math.random() * 10);
         }
         else{
