@@ -399,7 +399,7 @@ function upGrades() {
 
 function state() {
 
-    if (health == 0) {
+    if (health < 0) {
 
         document.querySelector(".statusBarHealth").style.width = "0px";
         document.querySelector(".loseBox").style.display = "flex";
@@ -529,7 +529,7 @@ function state() {
     stateOfMind < 0 && (stateOfMind = 0);
 
     health > 100 && (health = 100);
-    health < 0 && (health = 0)
+    
 
 }
 
@@ -540,7 +540,6 @@ function virusStatus() {
     virus.length > 0 ? document.querySelector(".healtIconVirus").style.visibility = "visible" : document.querySelector(".healtIconVirus").style.visibility = "hidden"
 
     if (totalHours - virusIncuvation[0] >= 24) {
-        debugger
         message("Ya no estas enfermo");
         virusIncuvation = [];
         virus = [];
