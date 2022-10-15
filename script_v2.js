@@ -228,8 +228,8 @@ let BACKPACK = [];
 
 // Arreglo de enfermedades .
 
-let VIRUS = [];
-let VIRUS_INCUVATION = [];
+let virus = [];
+let virusIncuvation = [];
 
 // FUNCIONES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -537,13 +537,13 @@ function state() {
 
 function virusStatus() {
 
-    VIRUS.length > 0 ? document.querySelector(".healtIconVirus").style.visibility = "visible" : document.querySelector(".healtIconVirus").style.visibility = "hidden"
+    virus.length > 0 ? document.querySelector(".healtIconVirus").style.visibility = "visible" : document.querySelector(".healtIconVirus").style.visibility = "hidden"
 
-    if (totalHours - VIRUS_INCUVATION[0] >= 24) {
+    if (totalHours - virusIncuvation[0] >= 24) {
         debugger
         message("Ya no estas enfermo");
-        VIRUS_INCUVATION = [];
-        VIRUS = [];
+        virusIncuvation = [];
+        virus = [];
     }
 }
 
@@ -1059,7 +1059,7 @@ function gather() {
 
     // Solo se puede recolectar si es de día o si no estamos enfermos
 
-    if ((hour >= 6 && hour < 19) && VIRUS.length === 0 || CAMPING_UPGRADE_TORCH.length > 0 && VIRUS.length === 0) {
+    if ((hour >= 6 && hour < 19) && virus.length === 0 || CAMPING_UPGRADE_TORCH.length > 0 && virus.length === 0) {
         GATHER_SOUND.play();
 
         collected = [];
@@ -1119,16 +1119,20 @@ function gather() {
         if (weatherConditions >= weatherModifier) {
             chanceOfGettingSick = Math.ceil(Math.random() * 10);
         }
+        else{
+            chanceOfGettingSick = 0;
+        }
         if (chanceOfGettingSick >= 7) {
-            VIRUS.push("virus")
-            VIRUS_INCUVATION.push(totalHours)
+            virus.push("virus")
+            virusIncuvation.push(totalHours)
             SICK_SOUND.play();
             message(`Salir a recolectar con lluvia ha hecho que te resfríes
             no podrás salir a recolectar por 24 horas`)
         }
+       
     }
 
-    else if (VIRUS.length > 0) {
+    else if (virus.length > 0) {
         document.querySelector(".recollectBox").style.display = "none";
         message("No puedes recolectar, estas enfermo.")
     }
