@@ -1013,6 +1013,9 @@ body .gameBox header .rightMenu .healtIcons .healtIconVirus {
 }
 body .gameBox header .rightMenu .headerCampUpGradesBox {
   display: flex;
+  position: absolute;
+  right: 70px;
+  top: 30px;
   align-items: center;
 }
 body .gameBox header .rightMenu .headerCampUpGradesBox .upgradeIconAntorcha {

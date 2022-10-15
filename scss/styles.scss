@@ -1022,6 +1022,9 @@ body {
 
                 .headerCampUpGradesBox {
                     display: flex;
+                    position: absolute;
+                    right: 70px;
+                    top: 30px;
                     align-items: center;
 
                     .upgradeIconAntorcha {

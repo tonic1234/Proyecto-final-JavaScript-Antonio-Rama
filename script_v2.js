@@ -338,19 +338,19 @@ function upGrades() {
 
     // La fogata dura 24 horas
 
-    totalHours - WOOD_FIRE_CREATION_TIME[0] === 24 && CAMPING_UPGRADE_WOOD_FIRE.shift();
+    totalHours - WOOD_FIRE_CREATION_TIME[0] >= 24 && CAMPING_UPGRADE_WOOD_FIRE.shift();
 
     // La antorcha dura 5 horas
 
-    totalHours - TORCH_CREATION_TIME[0] === 5 && CAMPING_UPGRADE_TORCH.shift();
+    totalHours - TORCH_CREATION_TIME[0] >= 5 && CAMPING_UPGRADE_TORCH.shift();
 
     // El recolector 72 horas
 
-    totalHours - WATER_COLLECTOR_CREATION_TIME[0] === 72 && CAMPING_UPGRADE_WATER_COLLECTOR.shift();
+    totalHours - WATER_COLLECTOR_CREATION_TIME[0] >= 72 && CAMPING_UPGRADE_WATER_COLLECTOR.shift();
 
     // La trampa 72 horas
 
-    totalHours - TRAMP_CREATION_TIME[0] === 72 && CAMPING_UPGRADE_TRAMP.shift();
+    totalHours - TRAMP_CREATION_TIME[0] >= 72 && CAMPING_UPGRADE_TRAMP.shift();
 
     // Reglas de horario para la fogata, piedras de la fogata y destello del fuego
 
