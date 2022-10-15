@@ -224,7 +224,7 @@ let noFood = [];
 
 // Arreglo de la mochila del jugador.
 
-let backPack = [STICK,LEAF,LEAF];
+let backPack = [];
 
 // Arreglo de enfermedades .
 
